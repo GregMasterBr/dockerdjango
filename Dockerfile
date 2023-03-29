@@ -11,7 +11,10 @@ ENV PYTHONUNBUFFERED 1
 WORKDIR /dockerdjango
 
 COPY requirements.txt ./dockerdjango/requirements.txt
+COPY .env .
 
-RUN python -m pip install --no-cache-dir --upgrade pip -r /dockerdjango/requirements.txt
+RUN python -m pip install --upgrade pip
+
+RUN pip install -r ./dockerdjango/requirements.txt
 
 COPY . /dockerdjango
